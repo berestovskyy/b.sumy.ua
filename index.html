@@ -1,1 +1,473 @@
-b.sumy.ua
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-46853768-4"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-46853768-4');
+	</script>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Andriy Berestovskyy: Software engineering and TCP/IP Networks</title>
+	<meta name="description" content="Andriy Berestovskyy's Home Page">
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+	 crossorigin="anonymous">
+
+	<style>
+		/*
+		 * Global styles
+		 */
+		:root {
+			--color-bg: #111;
+			--color-text: #eee;
+			--color-footer-text: #888;
+			--color-links: #8bf;
+			--color-links-active: #69d;
+			--color-menu-bg: #333;
+			--color-menu-text: #bbb;
+			--font-awesome: "Font Awesome 5 Free";
+		}
+
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			background: var(--color-bg);
+			color: var(--color-text);
+			font-family: Georgia, serif;
+			scroll-behavior: smooth;
+		}
+
+		img {
+			/* By default fit images into the text */
+			height: 1em;
+			opacity: 0.85;
+
+		}
+
+		/*
+		 * Header and navigation bar
+		 */
+		header {
+			font-size: 7vmin;
+			background: var(--color-menu-bg);
+			box-shadow: 0 0.1em 0.1em var(--color-menu-bg);
+			/* Position for the shadow */
+			position: relative;
+			z-index: 1;
+		}
+
+		header>nav {
+			/* Use flexbox model */
+			display: flex;
+		}
+
+		header>nav span {
+			/* Hide menu items text for mobile screens */
+			display: none;
+		}
+
+		header>nav a {
+			color: var(--color-menu-text);
+			margin: 0.1em 0.1em;
+			padding: 0.4em 0.6em;
+			text-decoration: none;
+		}
+
+		header>nav a:hover {
+			background: var(--color-menu-text);
+			color: var(--color-menu-bg);
+			border-radius: 0.3em;
+		}
+
+		header>nav a:last-child {
+			/* Align last item to the right */
+			margin-left: auto;
+			/* Add some space for the scroll bar */
+			margin-right: 0.7em;
+		}
+
+		/*
+		 * Main content
+		 */
+		main>section {
+			background-size: cover;
+			min-height: 100vh;
+			/* Position the element for the child elements */
+			position: relative;
+			/* Must match main>section>aside position below */
+			padding: 5vmin;
+		}
+
+		main>section a {
+			/* Mailto and huge links */
+			color: var(--color-links);
+			text-decoration: none;
+		}
+
+		main>section a:hover {
+			color: var(--color-links-active);
+		}
+
+		main>section a:before {
+			font-family: var(--font-awesome);
+			font-weight: bold;
+			/* angle-double-right */
+			content: "\f101";
+		}
+
+		main>section li:before {
+			margin-right: 0.25em;
+			font-family: var(--font-awesome);
+			font-weight: bold;
+			/* angle-right */
+			content: "\f105";
+		}
+
+		main>section img.vcard {
+			background-color: var(--color-bg);
+			border-radius: 0.03em;
+			box-shadow: 0 0.01em 0.01em var(--color-menu-bg);
+			padding: 0.05em;
+		}
+
+		/*
+		 * Main content backgrounds
+		 */
+		main>section:nth-child(odd) {
+			background-image: repeating-linear-gradient( 0deg,
+			#8c5, #8c5 2em, #7b4 2em, #7b4 4em);
+		}
+
+		main>section:nth-child(even) {
+			background-image: repeating-linear-gradient( -45deg,
+			#de6, #de6 2em, #cd5 2em, #cd5 4em);
+		}
+
+		main>section:nth-child(1) {
+			background-image: url(i/1s.jpg)
+		}
+
+		main>section:nth-child(2) {
+			background-image: url(i/2s.jpg)
+		}
+
+		main>section:nth-child(3) {
+			background-image: url(i/3s.jpg)
+		}
+
+		main>section:nth-child(4) {
+			background-image: url(i/4s.jpg)
+		}
+
+		main>section:nth-child(5) {
+			background-image: url(i/5s.jpg)
+		}
+
+		/*
+		 * Main content article
+		 */
+		main>section>article {
+			font-size: 4vmin;
+		}
+
+		/* Must be adjusted according to the content */
+		main>section>h1,
+		main>section>article h4,
+		main>section>article p,
+		main>section>article li {
+			background-color: var(--color-bg);
+			border-radius: 0.05em;
+			color: var(--color-text);
+			line-height: 1.25em;
+			opacity: 0.85;
+			/* Display lists as a text */
+			display: inline;
+			/* Fix padding for line breaks */
+			-webkit-box-decoration-break: clone;
+			box-decoration-break: clone;
+			/* Use vmin to align headers */
+			padding: 0 3vmin;
+			/* Allow hypens/word breaks */
+			overflow-wrap: break-word;
+			word-wrap: break-word;
+			-webkit-hyphens: auto;
+			hyphens: auto;
+		}
+
+		main>section>h1 {
+			font-size: 9vmin;
+			text-shadow: 0 0.01em 0.01em var(--color-bg);
+			/* Inverse header colors */
+			background-color: var(--color-text);
+			color: var(--color-bg);
+		}
+
+		/*
+		 * Main content aside link
+		 */
+		main>section>aside {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			/* No more than a half of either width or height */
+			font-size: 45vmin;
+			/* Must match main>section padding above */
+			margin: 5vmin;
+			opacity: 0.85;
+			text-shadow: 0 0.01em 0.01em var(--color-bg);
+		}
+
+		main>section>aside a {
+			/* Avoid wrap links */
+			white-space: nowrap;
+			display: block;
+			/* Fix bottom margin for links */
+			margin-bottom: -5vmin;
+		}
+
+		main>section>aside img {
+			/* Fix bottom margin for images */
+			display: block;
+		}
+
+		/*
+		 * Footer
+		 */
+		footer {
+			color: var(--color-footer-text);
+			padding: 1em;
+			text-align: center;
+		}
+
+		/*
+		 * Styles for wide (non-mobile) screens
+		 */
+		@media screen and (min-width: 50em) {
+			/*
+			 * Header and navigation bar for wide screens
+			 */
+			header {
+				font-size: 1rem;
+				position: fixed;
+				top: 0;
+				width: 100%;
+			}
+			header>nav span {
+				/* Show menu items text */
+				display: inline-block;
+				font-family: Arial, sans-serif;
+			}
+
+			main>section {
+				/* Adjust section margin for the nav bar */
+				padding-top: calc(5vmin + 2rem);
+			}
+
+			/*
+		 	 * Parallax for wide screens
+		 	 */
+			@supports (perspective: 1px) {
+				body {
+					/* Fix Safari H/W acceleration */
+					transform: translateZ(0px);
+					/* Disable scrolling context */
+					overflow: hidden;
+				}
+				main {
+					/* Enable 3d viewpoint */
+					perspective: 100px;
+					height: 100vh;
+					overflow-y: auto;
+					scroll-behavior: smooth;
+					/* Fix Firefox horizontal scrolling */
+					overflow-x: hidden;
+					/* Fix alignment by setting viewpoint */
+					perspective-origin: top left;
+				}
+				main>section {
+					transform-style: preserve-3d;
+				}
+
+				main>section>h1 {
+					/* position: relative; */
+					display: inline-block;
+					transform: translateZ(10px) scale(0.9);
+					transform-origin: top left;
+				}
+				main>section>article {
+					transform: translateZ(20px) scale(0.8);
+					transform-origin: top left;
+					position: relative;
+					/* Fix perspective distortion */
+					top: -3vh;
+					left: -0.25vw;
+				}
+				main>section>aside {
+					transform: translateZ(30px) scale(0.7);
+					transform-origin: bottom right;
+					/* Fix perspective distortion */
+					right: 29vw;
+					bottom: 29vh;
+				}
+				/*
+				 * Fixed footer for the parallax
+				 */
+				main>section:last-child {
+					/* Add space for the fixed footer */
+					margin-bottom: 5rem;
+				}
+				footer {
+					position: fixed;
+					width: 100%;
+					bottom: 0;
+					z-index: -1;
+				}
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<nav>
+			<a href="#top">
+				<img class="logo" src="i/logo-64.png" alt="A" />
+				<span>Home</span>
+			</a>
+			<a href="#linkedin">
+				<i class="fab fa-linkedin"></i>
+				<span>LinkedIn</span>
+			</a>
+			<a href="#facebook">
+				<i class="fab fa-facebook-square"></i>
+				<span>Facebook</span>
+			</a>
+			<a href="#stackoverflow">
+				<i class="fab fa-stack-overflow"></i>
+				<span>Stack Overflow</span>
+			</a>
+			<a href="#contact">
+				<i class="fas fa-envelope"></i>
+				<span>Contact</span>
+			</a>
+		</nav>
+	</header>
+
+	<main>
+		<section id="top">
+			<h1>Andriy Berestovskyy</h1>
+			<article>
+				<h4>software engineering and TCP/IP networks</h4>
+			</article>
+			<aside>
+				<picture>
+					<source srcset="i/logo-512.png" media="(min-width: 700px)">
+					<img class="logo" src="i/logo-256.png" alt="A" />
+				</picture>
+			</aside>
+		</section>
+
+		<section id="linkedin">
+			<h1>LinkedIn</h1>
+			<article>
+				<h4>Interested in:</h4>
+				<ul>
+					<li>software performance</li>
+					<li>data palnes</li>
+					<li>network virtualization</li>
+					<li>fancy algorithms and structures</li>
+				</ul>
+				<p>Link to profile:
+					<a href="https://www.linkedin.com/in/berestovskyy/">
+						<i class="fab fa-linkedin"></i>
+					</a>
+				</p>
+			</article>
+			<aside>
+				<a href="https://www.linkedin.com/in/berestovskyy/">
+					<i class="fab fa-linkedin"></i>
+				</a>
+			</aside>
+		</section>
+
+		<section id="facebook">
+			<h1>Facebook</h1>
+			<article>
+				<h4>Pictures of:</h4>
+				<ul>
+					<li>travel</li>
+					<li>kids</li>
+					<li>and more...</li>
+				</ul>
+				<p>Link to profile:
+					<a href="https://www.facebook.com/berestovskyy">
+						<i class="fab fa-facebook-square"></i>
+					</a>
+				</p>
+			</article>
+			<aside>
+				<a href="https://www.facebook.com/berestovskyy">
+					<i class="fab fa-facebook-square"></i>
+				</a>
+			</aside>
+		</section>
+
+		<section id="stackoverflow">
+			<h1>Stack Overflow</h1>
+			<article>
+				<h4>Favorite tags:</h4>
+				<ul>
+					<li>DPDK</li>
+					<li>performance</li>
+					<li>algorithm</li>
+					<li>multithreading...</li>
+				</ul>
+				<p>Link to profile:
+					<a href="https://stackoverflow.com/users/7969900/">
+						<i class="fab fa-stack-overflow"></i>
+					</a>
+				</p>
+			</article>
+			<aside>
+				<a href="https://stackoverflow.com/users/7969900/">
+					<i class="fab fa-stack-overflow"></i>
+				</a>
+			</aside>
+		</section>
+		<section id="contact">
+			<h1>Contact</h1>
+			<article>
+				<h4>
+					Mail me at
+					<a href="mailto:a@b.sumy.ua">a@b.sumy.ua</a>
+				</h4>
+				<br />
+				<p>
+					<i class="fas fa-mobile-alt"></i> Scan my contact:</p>
+			</article>
+			<aside>
+				<img class="vcard" src="i/vcard.png" alt="QR Code vCard" />
+			</aside>
+		</section>
+	</main>
+
+	<footer>
+		<p>hand
+			<i class="fas fa-hand-spock"></i> made</p>
+		<p>&copy; 2018 Andriy Berestovskyy</p>
+	</footer>
+</body>
+
+</html>
